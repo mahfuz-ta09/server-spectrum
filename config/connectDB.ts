@@ -1,5 +1,5 @@
-const { MongoClient } = require("mongodb");
-// Replace the uri string with your connection string
+const { MongoClient } = require("mongodb")
+
 let uri = process.env.CONNECTION_STRING
 let db:any
 let isConnected = false
@@ -25,7 +25,7 @@ const connectDb = async() =>{
 
 const getDB = () =>{
     if(!db){
-        console.log("Connection yetnot established!")
+        console.log("Connection yet not established!")
     }
 
     return db

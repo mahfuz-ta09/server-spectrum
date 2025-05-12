@@ -18,6 +18,7 @@ app.use(express.json())
 app.use(express.urlencoded( {extended: true} ))
 app.use(cookieParser(process.env.PARSE_SECRET))
 
+app.use('/app/api', route)
 
 app.get('/', (req:Request, res: Response) => {
     res.status(200).json({
@@ -25,7 +26,6 @@ app.get('/', (req:Request, res: Response) => {
     })
 })
 
-app.use('/api/app', route)
 
 app.use((req: Request, res: Response) => {
     res.status(404).json({

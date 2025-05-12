@@ -16,11 +16,11 @@ export const trackRequest = () =>{
         console.log(`${req.method} ${req.originalUrl}`);
         
         const loggedMessage = `${new Date().toISOString()} \t\t ${req.method} \t\t ${req.originalUrl} \t ${ip}`
-        fs.appendFile(filePath, loggedMessage + '\n', (err:any) => {
+          fs.appendFile(filePath, loggedMessage + '\n', (err:any) => {
             if (err) {
               console.error('Error writing to the log file:', err);
             } else {
-              console.log('Log successfully written');
+              console.log('Log logged');
             }
         })
         next();
