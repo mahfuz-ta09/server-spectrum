@@ -1,4 +1,8 @@
-const urlList = ['http://localhost:3000','http://localhost:3001','https://spectrum-ruby.vercel.app'] 
+const urlList = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://spectrum-ruby.vercel.app'
+] 
 
 export const corsOptions = {
     origin: function (origin:any, callback:any) {
@@ -8,6 +12,7 @@ export const corsOptions = {
         callback(new Error('Not allowed by CORS'))
       }
     },
+    // origin:"*",
     allowedHeaders:["Content-Type", "Authorization","authorization"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     optionsSuccessStatus: 200,

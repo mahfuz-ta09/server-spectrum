@@ -5,7 +5,7 @@ const uri = process.env.CONNECTION_STRING;
 if (!uri) {
   throw new Error("❌ CONNECTION_STRING environment variable is not defined.");
 }
-console.log(uri)
+
 let client
 let db:any
 let isConnected = false
