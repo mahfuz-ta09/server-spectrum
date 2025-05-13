@@ -13,3 +13,4 @@ export const corsOptions = {
     optionsSuccessStatus: 200,
     credentials: true
 }
+

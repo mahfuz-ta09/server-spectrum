@@ -1,31 +1,37 @@
 const { MongoClient } = require("mongodb")
 
-let uri = process.env.CONNECTION_STRING
+
+const uri = process.env.CONNECTION_STRING;
+if (!uri) {
+  throw new Error("❌ CONNECTION_STRING environment variable is not defined.");
+}
+
+let client
 let db:any
 let isConnected = false
 
 const connectDb = async() =>{
     try{
         if(isConnected && db){
-            console.log("Connection already exist!")
+            console.log("Already connected to database.")
             return db
         }
 
         const client = new MongoClient(uri)
-        await client.db()
+        await client.connect()
         db = client.db()
 
         isConnected = true
         console.log("Database connected successfully!!")
         return db
     }catch(err){
-        console.log("Error connected database",err)
+        throw err
     }
 }  
 
 const getDB = () =>{
     if(!db){
-        console.log("Connection yet not established!")
+        throw new Error("❌ Database connection not established.")
     }
 
     return db
