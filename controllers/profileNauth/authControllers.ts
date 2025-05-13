@@ -66,12 +66,6 @@ const signin = async( req: Request , res: Response) =>{
                 editedAt: "",
             }
 
-            // let hashedPass
-            // if(provider === 'custom'){
-            //     hashedPass = await bcrypt.hash(password,10)
-            // }
-            // newUser.password=hashedPass
-
             inserted = await usersCollection.insertOne(newUser)
 
         }
@@ -121,9 +115,7 @@ const signin = async( req: Request , res: Response) =>{
             success: true,
             message: "Login successful",
             status:200,
-            meta:{
-                accessToken: 5
-            }
+            accessToken: accessToken
         })
     }catch(err){
         console.log(err)

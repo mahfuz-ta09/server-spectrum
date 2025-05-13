@@ -1,4 +1,4 @@
-const urlList = ['http://localhost:3000'] 
+const urlList = ['http://localhost:3000','http://localhost:3001','https://spectrum-ruby.vercel.app'] 
 
 export const corsOptions = {
     origin: function (origin:any, callback:any) {
