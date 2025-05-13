@@ -96,20 +96,12 @@ const signin = async( req: Request , res: Response) =>{
         const accessToken = jwt.sign({ userProfile }, process.env.ACCESS_TOKEN)
         const refreshToken = jwt.sign({ userProfile },process.env.REFRESH_TOKEN)
         
-        res.cookie('accessToken',accessToken,{
-            maxAge:7 * 24 * 60 * 60 * 1000,
-            secure: true,
-            httpOnly: true,
-            sameSite: 'none'
-        })
-        
         res.cookie('refreshToken',refreshToken,{
             maxAge:7 * 24 * 60 * 60 * 1000,
             secure: true,
             httpOnly: true,
             sameSite: 'none'
         })
-        
 
         sendResponse(res,{
             success: true,
