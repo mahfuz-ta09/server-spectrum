@@ -90,11 +90,12 @@ const signin = async( req: Request , res: Response) =>{
 
         const userProfile = {
             email: email,
-            role: 'user'
+            role: 'user',
+            status:'active',
         }
         
-        const accessToken = jwt.sign({ userProfile }, process.env.ACCESS_TOKEN)
-        const refreshToken = jwt.sign({ userProfile },process.env.REFRESH_TOKEN)
+        const accessToken = jwt.sign( userProfile, process.env.ACCESS_TOKEN)
+        const refreshToken = jwt.sign( userProfile ,process.env.REFRESH_TOKEN)
         
         res.cookie('refreshToken',refreshToken,{
             maxAge:7 * 24 * 60 * 60 * 1000,
@@ -118,8 +119,57 @@ const signup = ( req: Request , res: Response) =>{
 
 }
 
-const logout = ( req: Request , res: Response) =>{
+const logout = async ( req: Request , res: Response) =>{
+    try{
+        const db = getDB()
+        const usersCollection = db.collection('users')
+        const refreshToken = req.cookies['refreshToken']
 
+
+        if(!refreshToken){
+            return sendResponse(res,{
+                message:"No refresh token found",
+                status:500,
+                success:false
+            })
+        }
+
+        const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN)
+        const { email } = decoded
+        
+        if(!email){
+            return sendResponse(res,{
+                message:"Error logging out",
+                status:500,
+                success:false
+            })
+        }
+
+        const query = { email : email }
+        const user = await usersCollection.findOne(query)
+        
+        if(!user){
+            return sendResponse(res,{
+                message:"Error logging out",
+                status:500,
+                success:false
+            })
+        }
+
+        res.clearCookie('refreshToken',{
+            secure: true,
+            httpOnly: true,
+            sameSite: 'none'
+        })
+
+        sendResponse(res,{
+            success: true,
+            message: "Logout successful",
+            status:200
+        })
+    }catch(err){
+        console.log(err)
+    }
 }
 
 const verifySignup = ( req: Request , res: Response) =>{

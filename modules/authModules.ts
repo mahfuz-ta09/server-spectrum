@@ -10,7 +10,11 @@ router.post('/signin',
     signin)
     
 router.post('/signup',signup)
-router.post('/logout',logout)
+
+router.post('/logout',
+    upload.none(),
+    logout)
+
 router.post('/verify-signup',verifySignup)
 router.post('/access-token',accessToken)
 
