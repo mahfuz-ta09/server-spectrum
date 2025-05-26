@@ -5,11 +5,11 @@ const urlList = [
 ] 
 
 export const corsOptions = {
-    origin: function (origin:any, callback:any) {
-      if (urlList.indexOf(origin) !== -1) {
-        callback(null, true)
+    origin: function (origin: any, callback: any) {
+      if (!origin || urlList.includes(origin)) {
+        callback(null, true);
       } else {
-        callback(new Error('Not allowed by CORS'))
+        callback(new Error('Not allowed by CORS'));
       }
     },
     allowedHeaders:["Content-Type", "Authorization","authorization"],
