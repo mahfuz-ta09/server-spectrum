@@ -12,7 +12,6 @@ export const corsOptions = {
         callback(new Error('Not allowed by CORS'))
       }
     },
-    // origin:"*",
     allowedHeaders:["Content-Type", "Authorization","authorization"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     optionsSuccessStatus: 200,

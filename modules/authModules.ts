@@ -8,7 +8,7 @@ const upload = multer()
 router.post('/signin', 
     upload.none(),
     signin)
-    
+
 router.post('/signup',signup)
 
 router.post('/logout',
