@@ -12,7 +12,7 @@ export const corsOptions = {
     //     callback(new Error('Not allowed by CORS'));
     //   }
     // },
-    origin:"*",
+    origin:"https://spectrum-ruby.vercel.app",
     allowedHeaders:["Content-Type", "Authorization","authorization"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     optionsSuccessStatus: 200,
