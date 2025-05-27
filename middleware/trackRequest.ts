@@ -6,8 +6,8 @@ const path = require('path');
 
 export const trackRequest = () =>{
     return (req: Request, res: Response, next: NextFunction) => {
-        const filePath = path.join(__dirname,'../text_folder','reqLog.txt')
-
+        // const filePath = path.join(__dirname,'../text_folder','reqLog.txt')
+        const filePath = path.join('/tmp', 'reqLog.txt')
         if(!fs.existsSync()){
             fs.mkdirSync(path.dirname(filePath),{ recursive: true })
         }
