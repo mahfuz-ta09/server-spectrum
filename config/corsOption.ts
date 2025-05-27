@@ -5,13 +5,14 @@ const urlList = [
 ] 
 
 export const corsOptions = {
-    origin: function (origin: any, callback: any) {
-      if (!origin || urlList.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    // origin: function (origin: any, callback: any) {
+    //   if (!origin || urlList.includes(origin)) {
+    //     callback(null, true);
+    //   } else {
+    //     callback(new Error('Not allowed by CORS'));
+    //   }
+    // },
+    origin:"*",
     allowedHeaders:["Content-Type", "Authorization","authorization"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     optionsSuccessStatus: 200,
