@@ -127,3 +127,7 @@
 2025-05-27T06:42:44.179Z 		 POST 		 /app/api/auth/logout 	 ::1
 2025-05-27T06:42:56.013Z 		 POST 		 /app/api/auth/signin 	 ::1
 2025-05-27T10:29:56.850Z 		 POST 		 /app/api/auth/logout 	 ::1
+2025-05-27T14:10:31.111Z 		 POST 		 /app/api/auth/logout 	 ::1
+2025-05-27T14:10:40.463Z 		 POST 		 /app/api/auth/signin 	 ::1
+2025-05-29T08:25:20.512Z 		 POST 		 /app/api/auth/logout 	 ::1
+2025-05-29T08:25:30.814Z 		 POST 		 /app/api/auth/signin 	 ::1
